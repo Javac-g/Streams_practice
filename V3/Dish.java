@@ -12,7 +12,7 @@ public class Dish {
         return name;
 
     }
-    private int getCalories(){
+    public int getCalories(){
         return calories;
     }
 }
