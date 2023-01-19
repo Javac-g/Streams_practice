@@ -24,6 +24,13 @@ public class Main {
         }
         return names;
     }
+    public static List<String>streamSortedList(List<Dish> dishes){
+        return dishes.stream()
+                .filter(x ->x.getCalories() > 500)
+                .sorted(Comparator.comparing(Dish::getCalories))
+                .map(Dish::getName)
+                .collect(Collectors.toList());
+    }
     public static void main(String...args){
         List<Dish> dishes = new ArrayList<>();
         dishes.add(new Dish("Mushrooms",100));
@@ -37,8 +44,10 @@ public class Main {
 
         List<Dish> smaller = getSmallerThan(500,dishes);
         List<String> lowCalories = getNames(smaller);
+        List<String> highCalories = streamSortedList(dishes);
 
         System.out.println(lowCalories);
+        System.out.println(highCalories);
 
 
     }
